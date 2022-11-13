@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content= "width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>ToDo List</title>
+    <link rel="icon" href="https://i.ibb.co/C9Q1ngD/sketch-3-todo-list-app-icon-template.png">
+</head>
+<body>
+    <div class="bug">
+        <h2 class="error">Le JavaScript n'est pas lié</h2>
+    </div>
+    <h1 id="heading1">Quoi de neuf ?</h1>
+    <div id="popUpNewTaskBg" class="">
+        <div id="popUpNewTask">
+            <div class="cancelXMark" onclick="cancel()">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <h4 class="taskText" id="nameOfTheTaskText">Nom de la tâche</h4>
+            <div class="nameOfTheTaskAreaDiv">
+                <input placeholder="Entrer ici..." type="text" id="nameOfTheNewTaskAreaInput" class="form">
+            </div>
+            <h4 class="taskText" id="categoryText">Catégorie</h4>
+            <div class="categoryDiv">
+                <select name="category" id="categoryList" class="form">
+                </select>
+                <div class="newCategoryAreaDiv">
+                    <h5 class="or">ou</h5>
+                    <button class="newCategoryBtn" onclick="popUpCategoryShow()">Créer une catégorie</button>
+                </div>
+            </div>
+            <div id="cancelOrCreateTask">
+                <div id="cancelTaskCreationBtn" class="cancelBtn" onclick="cancel()">
+                    <h4 class="cancelText">Annuler</h4>
+                </div>
+                <div id="addTaskBtn" class="validateBtn" onclick="createNewTask()">
+                    <h4 class="choiceText">Créer</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popUpChangeTaskBg" class="">
+        <div id="popUpChangeTask">
+            <div class="cancelXMark" onclick="cancelChangeTask()">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <h4 class="taskText" id="taskTextChangeTask">Nom de la tâche</h4>
+            <div class="nameOfTheTaskAreaDiv">
+                <input placeholder="Entrer ici" type="text" id="nameOfTheChangedTaskAreaInput" class="form">
+            </div>
+            <h4 class="taskText" id="categoryTextChangeTask">Catégorie</h4>
+            <div class="category">
+                <select name="category" id="categoryListOfChangeTask" class="form">
+                </select>
+                <div class="newCategoryAreaDiv">
+                    <h5 class="or">ou</h5>
+                    <button class="newCategoryBtn" onclick="popUpCategoryShow()">Créer une catégorie</button>
+                </div>
+            </div>
+            <div id="cancelOrChangeTask">
+                <div id="cancelChangeTask" class="cancelBtn" onclick="deleteTask()">
+                    <h4 class="cancelText">Supprimer</h4>
+                </div>
+                <div id="changeTaskBtn" class="validateBtn" onclick="changeTask()">
+                    <h4 class="choiceText">Modifier</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popUpNewCategoryBg" class="">
+        <div id="popUpNewCategory">
+            <div class="cancelXMark" onclick="cancelCategory()">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <h4 class="taskText" id="categoryNameText">Nom de la catégorie</h4>
+            <div class="nameOfTheTaskAreaDiv">
+                <input placeholder="Entrer ici..." type="text" id="nameOfTheCategoryAreaInput" class="form">
+            </div>
+            <h5 class="personalizationText">Couleur de fond</h5>
+            <div class="containerColor">
+                <div class="colors">
+                    <div class="circles" id="one" onclick="yellowCircle()"></div>
+                    <div class="circles" id="two" onclick="orangeCircle()"></div>
+                    <div class="circles" id="three" onclick="beigeCircle()"></div>
+                    <div class="circles" id="four" onclick="pinkCircle()"></div>
+                    <div class="circles" id="five" onclick="purpleCircle()"></div>
+                    <div class="circles" id="six" onclick="darkblueCircle()"></div>
+                    <div class="circles" id="seven" onclick="lightblueCircle()"></div>
+                    <div class="circles" id="eight" onclick="greenCircle()"></div>
+                </div>
+            </div>
+            <h5 class="personalizationText" id="fontText">Police d'écriture</h5>
+            <div class="div">
+                <select name="font" id="fontOfTheCategorySelect" class="form">
+                    <option value="Poppins" id="¨poppinsChoice">Poppins</option>
+                    <option value="Roboto" id="robotoChoice">Roboto</option>
+                    <option value="Mukta" id="muktaChoice">Mukta</option>
+                    <option value="Lobster" id="lobsterChoice">Lobster</option>
+                </select>
+            </div>
+            <div id="cancelOrCreateCategory">
+                <div id="cancelCategory" class="cancelBtn" onclick="cancelCategory()">
+                    <h4 class="cancelText">Annuler</h4>
+                </div>
+                <div id="addCategoryBtn" class="validateBtn" onclick="createNewCategory()">
+                    <h4 class="choiceText">Créer</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="new">
+        <div id="newTask" onclick="newTaskBtn()">
+            <div id="title">
+                <h3 id="openAddTaskMenuBtn">Ajouter une tâche</h3>
+            </div>
+            <div class="btnOpenAddTaskMenuBtn">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+        </div>
+        <div id="newTaskMobile" onclick="newTaskBtn()">
+            <div class="btnOpenAddTaskMenuBtn" id="btnOpenAddTaskMenuBtnMobile">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+        </div>
+    </div>
+    <div id="numberOfTasks">
+        <h5 id="tasksLeft">Statistiques indisponibles...</h5>
+    </div>
+    <div id="listOfTasks">
+        
+    </div>
+</body>
+<script src="script.js" defer></script>
+</html>

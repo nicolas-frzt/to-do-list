@@ -1,0 +1,971 @@
+/*Polices d'écritures*/
+@font-face {
+    font-family: 'crete_roundregular';
+    src: url('fonts/creteround-regular-webfont.woff2') format('woff2'),
+         url('fonts/creteround-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'poppinslight';
+    src: url('fonts/poppins-light-webfont.woff2') format('woff2'),
+         url('fonts/poppins-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'poppinsmedium';
+    src: url('fonts/poppins-medium-webfont.woff2') format('woff2'),
+         url('fonts/poppins-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'robotolight';
+    src: url('fonts/roboto-light-webfont.woff2') format('woff2'),
+         url('fonts/roboto-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'robotomedium';
+    src: url('fonts/roboto-medium-webfont.woff2') format('woff2'),
+         url('fonts/roboto-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'muktalight';
+    src: url('fonts/mukta-light-webfont.woff2') format('woff2'),
+         url('mukta-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'muktamedium';
+    src: url('fonts/mukta-medium-webfont.woff2') format('woff2'),
+         url('fonts/mukta-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'lobster_tworegular';
+    src: url('fonts/lobstertwo-regular-webfont.woff2') format('woff2'),
+         url('fonts/lobstertwo-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'lobster_twobold';
+    src: url('fonts/lobstertwo-bold-webfont.woff2') format('woff2'),
+         url('fonts/lobstertwo-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'poppinsregular';
+    src: url('fonts/poppins-regular-webfont.woff2') format('woff2'),
+         url('fonts/poppins-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+/*Paramètres pour toute la page*/
+
+*{
+    padding: 0;
+    margin: 0;
+    --backgroundColor: #1E3987;
+    --whiteTexts: #FFFFFF;
+    --purpleTexts: #D65EEA;
+    --blackTexts: #000000;
+    --darkGrayTexts: #2C2C2C;
+    --lightGrayTexts: #4C4C4C;
+    --pinkGradient: #D341EB;
+    --purpleGradient: #803DD1;
+    --strokeShapes: #8D8D8D;
+    --backgroundColorPopUp:#E1E1E1;
+    --backgroundColorForms: #D9D9D9;
+}
+
+
+a{
+    text-decoration: none;
+}
+
+.fa-solid{
+    cursor: pointer;
+}
+
+/*Page générale*/
+
+body{
+    background-color: var(--backgroundColor);
+}
+
+h1{
+    color: var(--whiteTexts);
+    font: 36px "poppinsregular";
+    margin-left: 67px;
+    margin-top: 38px;
+}
+
+#newTask{
+    margin-left: 67px;
+    margin-top: 12px;
+    background-color: #5675D0;
+    width: 579px;
+    height: 69px;
+    border-radius: 50px;
+    display: flex;
+    cursor: pointer;
+}
+
+#title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#openAddTaskMenuBtn{
+    font: 20px "poppinsregular";
+    color: var(--blackTexts);
+    margin-left: 26px;
+}
+.btnOpenAddTaskMenuBtn{
+    width: 49px;
+    height: 49px;
+    border-radius: 50px;
+    background: linear-gradient(133.62deg, var(--pinkGradient) 11.94%, var(--purpleGradient) 84.87%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 312px;
+}
+.fa-plus{
+    font: 40px "poppinsregular";
+    color: var(--whiteTexts);
+    margin-top: 4px;
+}
+#numberOfTasks{
+    margin-top: 45px;
+    margin-left: 45px;
+}
+#tasksLeft{
+    font: 16px "poppinsmedium";
+    color: var(--purpleTexts);
+}
+#tasksCompleted{
+    color: var(--whiteTexts);
+}
+
+#btnOpenAddTaskMenuBtnMobile{
+    display: none;
+}
+
+/* Pop-Up Nouvelle tâche*/
+
+#popUpNewTaskBg{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 3;
+    animation: backgroundEnter 0.5s ease;
+}
+
+#popUpNewTaskBg.active{
+    display: flex;
+}
+
+#popUpNewTask{
+    position: absolute;
+    display: none;
+    width: 718px;
+    height: 462px;
+    left: 30%;
+    top: 25%;
+    border-radius: 21px;
+    background-color: var(--backgroundColorPopUp);
+    animation: enterPopUpDesktop 0.3s ease;
+}
+
+@keyframes enterPopUpDesktop {
+    from {
+        margin-top: -120px;
+        opacity: 0;
+    } to {
+        margin-top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes backgroundEnter {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+.cancelXMark{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    cursor: pointer;
+    width: 37px;
+    height: 37px;
+    border-radius: 50px;
+    background-color: var(--backgroundColorForms);
+    margin-top: 18px;
+    margin-right: 20px;
+    font-size: 22px;
+    color: var(--strokeShapes);
+}
+
+#nameOfTheTaskText{
+    margin-top: 46px;
+}
+.taskText{
+    font: 20px "poppinsregular";
+    color: var(--darkGrayTexts);
+    margin-left: 53px;
+}
+.form{
+    width: 481px;
+    height: 46px;
+    background-color: var(--backgroundColorForms);
+    border: var(--strokeShapes) 1px solid;
+    border-radius: 7px;
+    margin-left: 53px;
+    margin-top: 25px;
+    padding-left: 14px;
+    font: 15px "poppinsregular";
+    color: var(--lightGrayTexts);
+}
+::placeholder{
+    font: 15px "poppinsregular";
+}
+#categoryText{
+    margin-top: 33px;
+}
+#categoryList, #categoryListOfChangeTask{
+    width: 481px;
+    height: 46px;
+    cursor: pointer;
+}
+.newCategoryAreaDiv{
+    display: flex;
+}
+.or{
+    margin-left: 60px;
+    font: 15px "poppinsregular";
+    color: var(--lightGrayTexts);
+    margin-top: 24px;
+}
+.newCategoryBtn{
+    width: 335px;
+    height: 35px;
+    border-radius: 58px;
+    border: var(--strokeShapes) 1px solid;
+    background-color: var(--backgroundColorForms);
+    margin-top: 17px;
+    margin-left: 26px;
+    font: 15px "poppinsregular";
+    color: var(--lightGrayTexts);
+    cursor: pointer;
+}
+
+#cancelOrCreateTask{
+    display: flex;
+    margin-top: 51px;
+}
+.cancelBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 277px;
+    height: 44px;
+    border: var(--pinkGradient) 2px solid;
+    border-radius: 10px;
+    margin-left: 60px;
+    cursor: pointer;
+}
+.cancelText{
+    text-align: center;
+    text-transform: uppercase;
+    font: 20px "poppinsregular";
+}
+.validateBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 277px;
+    height: 44px;
+    background: linear-gradient(88.66deg, #D341EB 11.98%, #803DD1 92.89%);
+    border-radius: 10px;
+    margin-left: 60px;
+    cursor: pointer;
+}
+.choiceText{
+    color: var(--whiteTexts);
+    text-align: center;
+    text-transform: uppercase;
+    font: 20px "poppinsregular";
+}
+
+/* Pop up changer la tâche */
+
+#popUpChangeTaskBg{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 3;
+    justify-content: center;
+    align-items: center;
+    animation: backgroundEnter 0.5s ease;
+}
+
+#popUpChangeTaskBg.active{
+    display: flex;
+}
+
+#popUpChangeTask{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    width: 718px;
+    height: 462px;
+    left: 30%;
+    top: 25%;
+    background-color: var(--backgroundColorPopUp);
+    border-radius: 21px;
+    display: none;
+    animation: enterPopUpDesktop 0.3s ease;
+}
+
+#taskTextChangeTask{
+    margin-top: 46px;
+}
+
+#categoryTextChangeTask{
+    margin-top: 33px;
+}
+
+#cancelOrChangeTask{
+    margin-top: 51px;
+    display: flex;
+}
+/* Pop-up nouvelle catogorie*/
+
+#popUpNewCategory{
+    position: absolute;
+    top: 25%;
+    left: 30%;
+    width: 718px;
+    height: 529px;
+    display: none;
+    z-index: 4;
+    background-color: var(--backgroundColorPopUp);
+    border-radius: 21px;
+    animation: enterPopUpDesktop 0.3s ease;
+}
+
+#popUpNewCategoryBg.active{
+    display: flex;
+}
+
+#popUpNewCategoryBg{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 3;
+    justify-content: center;
+    align-items: center;
+    animation: backgroundEnter 0.5s ease;
+}
+
+#categoryNameText{
+    margin-top: 46px;
+    margin-left: 53px;
+}
+
+.personalizationText{
+    margin-top: 23px;
+    margin-left: 53px;
+    font: 20px "poppinsregular";
+}
+
+.circles{
+    width: 56px;
+    height: 56px;
+    border: 2px solid #8D8D8D;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.colors{
+    display: grid;
+    grid-template-columns: repeat(8, 56px);
+    grid-column-gap: 14px;
+    grid-row-gap: 12px;
+    margin-left: 53px;
+    margin-top: 15px;
+}
+
+#one{
+    background-color: #FBF8CC;
+}
+#two{
+    background-color: #FDE4CF;
+}
+#three{
+    background-color: #FFCFD2;
+}
+#four{
+    background-color: #F1C0E8;
+}
+#five{
+    background-color: #CFBAF0;
+}
+#six{
+    background-color: #A3C4F3;
+}
+#seven{
+    background-color: #8EECF5;
+}
+#eight{
+    background-color: #B9FBC0;
+}
+
+#fontText{
+    margin-top: 28px;
+}
+.notSelected{
+    opacity: 0.5;
+}
+.selected{
+    border: #209124 4px solid;
+}
+#fontOfTheCategorySelect{
+    margin-top: 10px;
+    cursor: pointer;
+}
+input{
+    padding-left: 14px;
+    font: 15px "poppinsregular";
+}
+#cancelCategory{
+    margin-top: 51px;
+}
+#cancelOrCreateCategory{
+    display: flex;
+}
+#addCategoryBtn{
+    margin-top: 51px;
+    margin-left: 44px;
+}
+
+
+/* Style des catégories */
+#listOfTasks{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(290px, 340px));
+    grid-column-gap: 100px;
+    padding-right: 134px;
+    padding-left: 134px;
+    padding-bottom: 39px;
+}
+
+.categoryName{
+    font: 16px "poppinsregular";
+    color: var(--blackTexts);
+    text-transform: uppercase;
+    margin: 24px 24px 24px 35px;
+}
+
+ul{
+    display: inline-block;
+    min-height: 95px;
+    max-height: 300px;
+    overflow: scroll;
+    background-color: #E7D2EB;
+    margin-top: 64px;
+    border-radius: 18px;
+    padding: 0px 5px 20px 0px;
+    overflow-x: hidden;
+}
+
+li{
+    display: flex;
+    margin: 9px 9px 9px 20px;
+}
+
+.delete{
+    animation: deleteTask 0.7s ease-in-out;
+}
+
+@keyframes deleteTask {
+    from {
+        opacity: 1;
+    } to {
+        opacity: 0;
+    }
+}
+
+.checkbox, label, .taskName{
+    cursor: pointer;
+    width: 100%;
+}
+
+.checkbox{
+    width: 15px;
+    height: 15px;
+    margin-right: 15px;
+}
+
+label{
+    font: 15px "poppinslight";
+    color: var(--blackTexts);
+}
+
+.fa-gear{
+    float: right;
+}
+
+
+
+/*Styles des tâches*/
+
+.labelChecked{
+    text-decoration: line-through;
+}
+
+
+/* Responsive et medias queries */
+
+@media screen and (max-width: 1728px) {
+    #listOfTasks{
+        grid-column-gap: 70px;
+    }
+}
+
+@media screen and (max-width: 1643px) {
+    #listOfTasks{
+        padding-right: 100px;
+        padding-left: 100px;
+    }
+}
+
+@media screen and (max-width: 1571px) {
+    #listOfTasks{
+        padding-right: 67px;
+        padding-left: 67px;
+    }
+}
+
+@media screen and (max-width: 1438px) {
+    #listOfTasks{
+        grid-template-columns: repeat(3, minmax(310px, 360px));
+        grid-column-gap: 100px;
+    }
+    #popUpNewTask, #popUpNewCategory, #popUpChangeTask{
+       left: 23%; 
+    }
+}
+
+@media screen and (max-width: 1263px) {
+    #listOfTasks{
+        grid-column-gap: 67px;
+    }
+    #popUpNewTask, #popUpNewCategory, #popUpChangeTask{
+        left: 20%; 
+    }
+}
+
+@media screen and (max-width: 1203px) {
+    #listOfTasks{
+        grid-template-columns: repeat(3, minmax(290px, 340px));
+    }
+}
+
+@media screen and (max-width: 1143px) {
+    #listOfTasks{
+        grid-column-gap: 40px;
+    }
+    #popUpNewTask, #popUpNewCategory, #popUpChangeTask{
+        left: 17%; 
+    }
+}
+
+@media screen and (max-width: 1082px) {
+    #listOfTasks{
+        grid-template-columns: repeat(2, minmax(310px, 425px));
+        grid-column-gap: 100px;
+    }
+}
+
+@media screen and (max-width: 1040px) {
+    #popUpNewTask, #popUpNewCategory, #popUpChangeTask{
+        left: 15%; 
+    }
+}
+
+@media screen and (max-width: 985px) {
+    #popUpNewTask, #popUpNewCategory, #popUpChangeTask{
+        left: 10%; 
+    }
+}
+
+@media screen and (max-width: 930px) {
+    #popUpNewTask, #popUpChangeTask{
+        position: absolute;
+        width: 90%;
+        height: 433px;
+        bottom: -40px;
+        left: 5%;
+        top: auto;
+        animation: enterPopUpMobile 0.3s ease-in-out;
+    }
+    @keyframes enterPopUpMobile {
+        from {
+            bottom: -300px;
+        } to {
+            top: auto;
+        }
+    }
+    #popUpNewCategory{
+        width: 90%;
+        height: 523px;
+        bottom: -40px;
+        left: 5%;
+        top: auto;
+        animation: enterPopUpMobile 0.3s ease-in-out;
+    }
+    .cancelXMark{
+        margin-right: 18px;
+        margin-top: 13px;
+    }
+    .taskText, #categoryNameText, .personalizationText, #taskTextChangeTask{
+        margin-left: 34px;
+    }
+    #nameOfTheTaskText, #categoryNameText, #taskTextChangeTask{
+        margin-top: 34px;
+    }
+    .form, #categoryList, #fontOfTheCategorySelect{
+        margin-left: 39px;
+        margin-top: 11px;
+        width: 85%;
+    }
+    #categoryList, #fontOfTheCategorySelect, #categoryListOfChangeTask{
+        width: calc(85% + 18px)
+    }
+    .or{
+        margin-left: 40px;
+        margin-top: 22px;
+    }
+    .newCategoryBtn{
+        margin-top: 18px;
+        margin-left: 24px;
+        width: 60%;
+    }
+    #cancelOrCreateTask, #cancelOrChangeTask{
+        margin-top: 30px;
+        justify-content: center;
+    }
+    #cancelOrCreateCategory{
+        justify-content: center;
+    }
+    #cancelTaskCreationBtn, #cancelCategory, #cancelChangeTask{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 0;
+        margin-right: 44px;
+    }
+    #addCategoryBtn{
+        margin-left: 0;
+    }
+    .validateBtn{
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 892px) {
+    #listOfTasks{
+        grid-column-gap: 67px;
+    }
+}
+
+@media screen and (max-width: 832px) {
+    #listOfTasks{
+        grid-column-gap: 50px;
+    }
+}
+
+@media screen and (max-width: 806px) {
+    #listOfTasks{
+        grid-column-gap: 35px;
+    }
+}
+
+@media screen and (max-width: 806px) {
+    #listOfTasks{
+        grid-template-columns: minmax(310px, 790px);
+        padding-right: 120px;
+        padding-left: 120px;
+    }
+}
+
+@media screen and (max-width: 752px) {
+    #listOfTasks{
+        padding-right: 10%;
+        padding-left: 10%;
+    }
+    .colors{
+        grid-template-columns: repeat(4, 56px);
+        grid-column-gap: 100px;
+    }
+    #popUpNewCategory{
+        height: 601px;
+    }
+}
+
+
+@media screen and (max-width: 730px) {
+    #newTask{
+        display: none;
+    }
+    #newTaskMobile{
+        width: 100%;
+        height: 100%;
+    }
+    #btnOpenAddTaskMenuBtnMobile{
+        display: flex;
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        width: 75px;
+        height: 75px;
+    }
+    .fa-plus{
+        font-size: 55px;
+    }
+    #numberOfTasks{
+        margin-left: 5%;
+        margin-top: 15px;
+    }
+    #tasksLeft{
+        font-size: 20px;
+    }
+    h1{
+        margin-left: 10%;
+    }
+    .Category{
+        margin-top: 39px;
+    }
+    #cancelTaskCreationBtn, #cancelCategory{
+        display: none;
+    }
+    #cancelOrChangeTask{
+        flex-direction: column;
+        align-items: center;
+    }
+    #cancelChangeTask{
+        margin: 0;
+        margin-bottom: 25px;
+    }
+    #popUpChangeTask{
+        height: 490px;
+    }
+    #addCategoryBtn{
+        margin-top: 11px;
+    }
+}
+@media screen and (max-width: 700px) {
+    .colors{
+        grid-column-gap: 17%;
+        padding-right: 53px;
+    }
+}
+
+@media screen and (max-width: 679px) {
+    .form{
+        width: 80%;
+    }
+    #categoryList, #fontOfTheCategorySelect, #categoryListOfChangeTask{
+        width: calc(80% + 18px);
+    }
+}
+
+@media screen and (max-width: 613px){
+    .colors{
+        grid-column-gap: 14%;
+    }
+}
+@media screen and (max-width: 538px){
+    .colors{
+        grid-column-gap: 10%;
+    }
+}
+
+@media screen and (max-width: 494px) {
+    #tasksLeft{
+        font-size: 16px;
+    }
+    .form{
+        width: 75%;
+    }
+    #categoryList, #fontOfTheCategorySelect, #categoryListOfChangeTask{
+        width: calc(75% + 18px);
+    }
+}
+@media screen and (max-width: 473px){
+    .colors{
+        grid-column-gap: 8%;
+    }
+}
+@media screen and (max-width: 438px){
+    .colors{
+        grid-template-columns: repeat(3, 56px);
+        grid-column-gap: 17%;
+    }
+    #eight {
+        margin-left: 45px;
+    }
+    #seven{
+        margin-left: 50px;
+    }
+    #popUpNewCategory{
+        height: 600px;
+    }
+}
+
+@media screen and (max-width: 428px) {
+    #popUpNewTask{
+        position: absolute;
+        width: 90%;
+        height: 433px;
+        bottom: -40px;
+        left: 5%;
+        top: auto;
+    }
+    .cancelXMark{
+        margin-right: 18px;
+        margin-top: 13px;
+    }
+    .taskText{
+        margin-left: 34px;
+    }
+    #nameOfTheTaskText{
+        margin-top: 34px;
+    }
+    .form, #categoryList, #fontOfTheCategorySelect{
+        margin-left: 39px;
+        margin-top: 11px;
+        width: 272px;
+    }
+    #categoryList, #fontOfTheCategorySelect, #categoryListOfChangeTask{
+        width: 287px;
+    }
+    .or{
+        margin-left: 40px;
+        margin-top: 20px;
+    }
+    .newCategoryBtn{
+        margin-top: 14px;
+        margin-left: 24px;
+        width: 224px;
+    }
+    .cancelBtn{
+        display: none;
+    }
+    #cancelChangeTask{
+        display: flex;
+    }
+    #cancelOrCreateTask{
+        margin-top: 30px;
+        justify-content: center;
+    }
+    .validateBtn{
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .form{
+        width: 70%;
+    }
+    #categoryList, #fontOfTheCategorySelect, #categoryListOfChangeTask{
+        width: calc(70% + 18px);
+    }
+    .newCategoryBtn{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .validateBtn, #cancelChangeTask{
+        width: 75%;
+    }
+}
+@media screen and (max-width: 390px) {
+    .colors{
+        margin-left: 34px;
+        grid-column-gap: 15%;
+    }
+}
+@media screen and (max-width: 383px) {
+    #tasksLeft{
+        font-size: 16px;
+    }
+    #btnOpenAddTaskMenuBtnMobile{
+        width: 71px;
+        height: 71px;
+        grid-template-columns: minmax(250px, 100%);
+    }
+    #tasksCompleted{
+        display: none;
+    }
+    #listOfTasks{
+        grid-template-columns: 100%;
+    }
+    h1{
+        margin-right: 20px;
+    }
+}
+
+.bug {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.error {
+    font: 50px "poppinsregular";
+}
