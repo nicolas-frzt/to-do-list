@@ -1,6 +1,7 @@
 const bug = document.querySelector(".bug");
 bug.style.display = "none";
 
+
 // Récupération des éléments
 
 const searchBox = document.getElementById("nameOfTheNewTaskAreaInput");
