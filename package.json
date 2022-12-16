@@ -1,0 +1,21 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nicos-08/to-do-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nicos-08/to-do-list/issues"
+  },
+  "homepage": "https://github.com/Nicos-08/to-do-list#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.28.1"
+  }
+}
